@@ -1,4 +1,21 @@
 {
   "name": "IS66_RAM_library",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "description": "IS66WVS4M8ALL 32Mb SerialRAM driver library",
+  "keywords": ["IS66WVS4M8ALL", "SerialRAM", "memory", "frequency synthesizer", "SPI"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nullkraft/IS66_RAM_library"
+  },
+  "authors": [
+    {
+      "name": "Mark Stanley"
+    }
+  ],
+  "license": "GPL-2.0-only",
+  "frameworks": ["arduino"],
+  "platforms": "*",
+  "dependencies": [
+    { "name": "SPI" }
+  ]
 }
