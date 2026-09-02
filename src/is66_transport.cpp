@@ -1,11 +1,5 @@
 #include "is66_transport.h"
 
-namespace {
-
-constexpr uint32_t W25N_SPI_CLOCK_HZ = 16000000UL;
-
-} // namespace
-
 Is66Transport::Is66Transport(uint8_t csPin, SPIClass& spi)
     : _csPin(csPin), _spi(spi)
 {
@@ -21,9 +15,6 @@ void Is66Transport::transfer(const uint8_t* command, size_t commandLength,
                              const uint8_t* writeData, size_t writeLength,
                              uint8_t* readData, size_t readLength)
 {
-    _spi.beginTransaction(SPISettings(W25N_SPI_CLOCK_HZ, MSBFIRST, SPI_MODE0));
-    digitalWrite(_csPin, LOW);
-
     for (size_t i = 0; i < commandLength; ++i) {
         _spi.transfer(command[i]);
     }
@@ -33,7 +24,4 @@ void Is66Transport::transfer(const uint8_t* command, size_t commandLength,
     for (size_t i = 0; i < readLength; ++i) {
         readData[i] = _spi.transfer(0U);
     }
-
-    digitalWrite(_csPin, HIGH);
-    _spi.endTransaction();
 }
