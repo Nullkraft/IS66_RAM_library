@@ -7,8 +7,6 @@ Is66Transport::Is66Transport(uint8_t csPin, SPIClass& spi)
 
 void Is66Transport::begin()
 {
-    pinMode(_csPin, OUTPUT);
-    digitalWrite(_csPin, HIGH);
 }
 
 void Is66Transport::transfer(const uint8_t* command, size_t commandLength,
