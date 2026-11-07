@@ -10,6 +10,9 @@ public:
     explicit IS66_Ram(uint8_t csPin, SPIClass& spi = SPI);
 
     void readRamId(uint8_t& manufacturerId, uint16_t& kgdId);
+    bool checkAddress(uint32_t address, size_t length);
+    bool read(uint32_t address, uint8_t* data, size_t length);
+    bool write(uint32_t address, const uint8_t* data, size_t length);
     void begin();
 
 private:
